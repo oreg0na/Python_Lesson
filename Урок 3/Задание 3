@@ -1,1 +1,14 @@
+#1 способ
+name = input('Как вас зовут?\n')
+surname = input('Как ваша фамилия?\n')
+patronymic = input('Как ваше отчество?\n')
+print(name, '-', surname, '-', patronymic, sep='')
 
+#2 способ
+print('Как вас зовут?')
+name = input()
+print('Как ваша фамилия?')
+surname = input()
+print('Как ваше отчество?')
+patronymic = input()
+print(name, surname, patronymic, sep='-')
