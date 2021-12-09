@@ -1,1 +1,4 @@
-Задание 1 из урока 3
+print('Glo Academy')
+print('')
+print('Glo Academy')
+print('Glo Academy', '', 'Glo Academy', sep='\n')
