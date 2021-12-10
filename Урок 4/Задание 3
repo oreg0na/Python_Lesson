@@ -1,0 +1,10 @@
+n = input('введите трехзначное число: ')
+if len(n) != 3:
+  print('Не выполнены условия задачи!')
+else:
+    num = int(n)
+    first = num // 100
+    second = num // 10 % 10
+    third = num % 10
+    print('Сумма цифр числа', num, 'равна', first + second + third)
+    print('Произведение цифр числа', num, 'равно', first * second * third)
