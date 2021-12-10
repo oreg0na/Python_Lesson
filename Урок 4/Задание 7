@@ -1,0 +1,8 @@
+n = input('Введите натуральное число, не превосходящее 1 000 000 000: ')
+num = int(n)
+if num >= 1000000000:
+    print('Не выполнины условия задачи!')
+else:
+    lst = list(map(int, list(n)))
+    last = lst[-3:]
+    print(sum(last))
