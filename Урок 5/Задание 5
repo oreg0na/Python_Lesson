@@ -1,0 +1,5 @@
+import math
+
+k = int(input('Введите кол-во задач: '))
+m = int(input('Введите кол-во задач, которые вы делаете в день: '))
+print(math.ceil(k/m))
