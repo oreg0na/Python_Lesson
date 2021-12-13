@@ -1,0 +1,10 @@
+weight = int(input('Введите вес дыни: '))
+if weight > 100:
+    print('Вес дыни не может быть больше 100кг')
+elif weight < 0:
+    print('Вес дыни не может быть отрицательным')
+else:
+    if weight % 2 == 0 and weight != 2:
+        print('YES')
+    else:
+        print('NO')
