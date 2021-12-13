@@ -1,0 +1,26 @@
+number = int(input('Введи число в диапазоне от 0 до 36: '))
+if number > 36 or number < 0:
+    print('Введите число в диапазоне от 0 до 36')
+else:
+    if 1 <= number <= 10:
+        if number % 2 == 0:
+            print('Карман черный')
+        else:
+            print('Карман красный')
+    elif 11 <= number <= 18:
+        if number % 2 == 0:
+            print('Карман красный')
+        else:
+            print('Карман чёрный')
+    elif 19 <= number <= 28:
+        if number % 2 == 0:
+            print('Карман чёрный')
+        else:
+            print('Карман красный')
+    elif 29 <= number <= 36:
+        if number % 2 == 0:
+            print('Карман красный')
+        else:
+            print('Карман чёрный')
+    else:
+        print('Карман зелённый')
