@@ -1,0 +1,5 @@
+t = str(input('Введите текст: '))
+if 'Glo Academy' in t:
+    print('Yes')
+else:
+    print('No')
