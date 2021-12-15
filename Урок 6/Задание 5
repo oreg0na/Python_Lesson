@@ -1,0 +1,6 @@
+t = str(input('Введите почту: '))
+m = ['@', '.']
+if str(m) not in t:
+    print('Не корректный')
+else:
+    print('Корректный')
