@@ -1,6 +1,5 @@
-t = str(input('Введите почту: '))
-m = ['@', '.']
-if str(m) not in t:
-    print('Не корректный')
+email = input('Введите вашу почту: ')
+if "@" and "." in email:
+    print('Ввод корректный')
 else:
-    print('Корректный')
+    print('Есть ошибка')
