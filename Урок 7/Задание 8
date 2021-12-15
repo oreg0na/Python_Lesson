@@ -1,0 +1,14 @@
+n = int(input('Введите число итераций цикла: '))
+maximum = minimum = int(input('Введите число: '))
+if n >= 2:
+    for i in range(n-1):
+        number = int(input('Введите число: '))
+        if number > maximum:
+            maximum = number
+        elif number < minimum:
+            minimum = number
+else:
+    number = int(input('Введите число: '))
+    minimum = maximum = number
+print(maximum)
+print(minimum)
