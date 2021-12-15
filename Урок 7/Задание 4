@@ -1,0 +1,10 @@
+n1 = int(input('Введите первое число: '))
+n2 = int(input('Введите второе число: '))
+if n1 < n2:
+    for i in range(n1, n2+1):
+        if i % 2 == 0:
+            print(i)
+else:
+    for i in range(n2, n1+1):
+        if i % 2 == 0:
+            print(i)
