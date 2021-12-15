@@ -1,0 +1,10 @@
+n = int(input('Введите натуральное число: '))
+flag = 0
+for i in range(n):
+    n2 = int(input('Введите число: '))
+    if n % 2 != 0:
+        flag = 1
+if flag == 1:
+    print('Yes')
+else:
+    print('No')
