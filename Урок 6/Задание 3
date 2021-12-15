@@ -1,0 +1,9 @@
+t1 = str(input('Введите текст: '))
+t2 = str(input('Введите текст: '))
+t3 = str(input('Введите текст: '))
+if len(t1) > len(t2) and len(t1) > len(t3):
+    print(t1)
+elif len(t2) > len(t1) and len(t2) > len(t3):
+    print(t2)
+else:
+    print(t3)
