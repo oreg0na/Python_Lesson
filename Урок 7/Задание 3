@@ -1,0 +1,4 @@
+n1 = int(input('Введите первое число: '))
+n2 = int(input('Введите второе число: '))
+for i in range(n1, n2+1):
+    print(i)
