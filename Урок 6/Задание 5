@@ -1,5 +1,14 @@
+# 1 способ
 email = input('Введите вашу почту: ')
-if "@" and "." in email:
+if "@" in email and "." in email:
+    print('Ввод корректный')
+else:
+    print('Есть ошибка')
+
+# 2 способ
+email = input('Введите вашу почту: ')
+m = ['@', '.']
+if m[0] in email and m[1] in email:
     print('Ввод корректный')
 else:
     print('Есть ошибка')
