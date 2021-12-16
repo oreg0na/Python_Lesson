@@ -1,0 +1,10 @@
+a = int(input('Введите число: '))
+sum = 0
+len = 0
+while a != 0:
+    a = int(input('Введите число: '))
+    sum += 1
+    len += 1
+average = int(sum/len)
+print(average)
+''' можно было написать короче print(int(sum/len))'''
