@@ -1,0 +1,19 @@
+# 1 способ
+n = int(input('Введите натуральное число: '))
+max_digit = 0
+min_digit = 9
+while n != 0:
+    last_digit = int(n % 10)
+    if last_digit > max_digit:
+        max_digit = last_digit
+    elif last_digit < min_digit:
+        min_digit = last_digit
+    n = n // 10
+print('Максимальная цифра равна', max_digit)
+print('Минимальная цифра равна', min_digit)
+
+# 2 способ
+n = int(input('Введите натуральное число: '))
+digit = list(str(n))
+print('Максимальная цифра равна', max(digit))
+print('Минимальная цифра равна', min(digit))
