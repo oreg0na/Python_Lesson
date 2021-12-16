@@ -1,0 +1,23 @@
+# 1 способ
+a = int(input('Введите число: '))
+while a != 0:
+    summ = sum(map(int, str(a)))
+    if a % summ == 0:
+        print('Yes')
+        break
+    else:
+        print('No')
+        break
+
+# 2 способ
+a = int(input('Введите натуральное число: '))
+total = 0
+n = a
+while n != 0:
+    last_digit = int(n % 10)
+    total = total + last_digit
+    n = n / 10
+if a % total == 0:
+    print('Yes')
+else:
+    print('No')
