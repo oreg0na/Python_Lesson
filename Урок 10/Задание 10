@@ -1,0 +1,7 @@
+# Подсчитать сколько слов в строке
+s = str(input())
+counter = 0
+for c in s:
+    if c == ' ':
+        counter += 1
+print(counter + 1)

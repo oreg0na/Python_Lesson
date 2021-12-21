@@ -1,0 +1,5 @@
+# вывести ФИО в виде Фамилия И.О.
+surname, name, patronymic = str(input('Фамилия:')), str(input('Имя:')), str(input('Отчество:'))
+name = name[:1] 
+patronymic = patronymic[:1]
+print(f'{surname} {name}.{patronymic}.')

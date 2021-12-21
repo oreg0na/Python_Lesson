@@ -1,0 +1,7 @@
+# вывести все буквы в алфавите между двумя введенными буквами
+a = str(input())
+b = str(input())
+if a > b:
+    a, b = b, a
+for i in range(ord(a), ord(b)+1):
+    print(chr(i), end=' ')

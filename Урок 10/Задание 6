@@ -1,0 +1,5 @@
+# вывести все цифры из введенной строки
+s = str(input())
+for c in s:
+    if c.isdigit() == True:
+        print(c, end='')   

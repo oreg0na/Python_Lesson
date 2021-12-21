@@ -1,0 +1,6 @@
+# Определите является ли данный символ цифрой или нет.
+s = str(input())
+if s.isdigit() == True:
+    print('YES')
+else:
+    print('NO')

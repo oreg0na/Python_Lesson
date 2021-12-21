@@ -1,0 +1,12 @@
+# Является ли введенный символ заглавной буквой русского алфавита.
+s = str(input())
+
+for i in range(1040, 1072):
+    f = 0
+    if ord(s) == i:
+        print('YES')
+        break
+    else:
+        f = 1
+if f == 1:
+    print('NO')
