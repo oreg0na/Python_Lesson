@@ -1,0 +1,9 @@
+# подсчитывает, сколько пар элементов, равных друг другу
+my_list = [int(s) for s in input().split()]
+
+counter = 0
+for i in range(len(my_list)):
+    for j in range(i + 1, len(my_list)):
+        if my_list[i] == my_list[j]:
+            counter += 1
+print(counter)

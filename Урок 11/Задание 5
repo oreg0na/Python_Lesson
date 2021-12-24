@@ -1,0 +1,11 @@
+#Выведите те элементы, которые встречаются в списке только один раз.
+num_list = [1, 3, 2, 4, 2]
+new_num_list = []
+
+for c in num_list:
+    if num_list.count(c) > 1:
+        continue
+    else:
+        new_num_list.append(c)
+        
+print(*new_num_list)

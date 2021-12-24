@@ -1,0 +1,14 @@
+# является ли введенная строка текста ip-адресом.
+
+num_ip = input()
+list_ip = num_ip.split('.')
+
+for c in list_ip:
+    f = 0
+    if int(c) >= 0 and int(c) <= 255:
+        f = 1
+    else:
+        print('NO')
+        break
+if f == 1:
+    print('YES')

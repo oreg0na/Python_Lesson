@@ -1,0 +1,15 @@
+# Поисковая система. Из введенного пользователем банка слов выводится то, где встречается поисковой запрос. Не чувствителен к регистру
+
+n = int(input())
+bank_words = []
+
+for i in range(n):
+    bank_words.append(input())
+
+search_query = input()
+
+for c in bank_words:
+    k = c.lower()
+    p = search_query.lower()
+    if p in k:
+        print(c)
