@@ -1,0 +1,11 @@
+# Вычисляется сумма доставки: при 1 товаре = 100р. При > 1 + 50р за каждый следующий товар
+
+def cost_delivery(num):
+    if num == 1:
+        cost = 100
+    elif num > 1:
+        cost = 100 + 50 * (num - 1)
+    return cost
+
+num = int(input())
+print(cost_delivery(num))

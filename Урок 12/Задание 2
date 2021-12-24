@@ -1,0 +1,17 @@
+# Произведение максимальных элементов из двух разных списков
+
+def max_element_list(list_n):
+    list_n.sort()
+    max_element = list_n[len(list_n) - 1:]
+    return max_element
+
+list1 = [int(s) for s in input().split()]
+
+list2 = [int(s) for s in input().split()]
+
+max_element1 = max_element_list(list1)
+max_element2 = max_element_list(list2)
+
+total = max_element1[0] * max_element2[0]
+
+print(total)

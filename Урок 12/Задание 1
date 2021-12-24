@@ -1,0 +1,23 @@
+# Найдите количество разрядов каждого из них и выведите их произведение.
+
+def number_rank(num):
+    rank = 0
+    while num != 0:
+        num = num // 10
+        rank += 1
+    return rank
+
+def total_number_rank(num1, num2):
+    rank1 = number_rank(num1)
+    #rank = rank1
+
+    rank2 = number_rank(num2)
+    #rank = rank2
+    
+    total = rank1 * rank2
+    return total
+
+
+num1, num2 = int(input()), int(input())
+
+print(total_number_rank(num1, num2))

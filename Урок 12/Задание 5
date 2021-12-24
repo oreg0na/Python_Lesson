@@ -1,0 +1,11 @@
+# Введенная дата проверяется на "звездность" 10.06.1960 - звездная
+
+def star_date(date):
+    date_list = date.split('.')
+    if int(date_list[0]) * int(date_list[1]) == int(date_list[2]) % 100:
+        return True
+    else:
+        return False
+    
+date = input()
+print(star_date(date))

@@ -1,0 +1,10 @@
+# Вводится номер месяца. Вывести количество дней в этом месяце
+
+calendar_list = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+def days_numbers(num):
+    numbers = calendar_list[num - 1]
+    return numbers
+num = int(input())
+print(days_numbers(num))
+    
