@@ -1,0 +1,31 @@
+print('Привет, сейчас я отгадаю твое число!')
+
+while True:
+    print('Назови число - крайнюю границу для отгадывания')
+    n = int(input())
+
+    counter_2 = 0
+    list_numbers = []
+    
+    for i in range(1, n + 1):
+        list_numbers.append(i)
+    list_numbers.sort()    
+    mid = len(list_numbers) // 2
+    low = 0
+    high = len(list_numbers) - 1
+
+    while True:
+        print(f'Это число: {mid}? Ответь: "Мое больше", "Мое меньше" или "Да"')
+        counter_2 += 1
+
+        answer_user = input()
+
+        if answer_user == 'Да':
+            print(f'Ура! Количество попыток: {counter_2}')
+            break
+        elif answer_user == 'Мое больше':
+            low = mid + 1
+        elif answer_user == 'Мое меньше':
+            high = mid - 1
+
+        mid = (low + high) // 2

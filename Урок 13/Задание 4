@@ -1,0 +1,75 @@
+# Угадай число. Добавили возможность указания оптимального числа попыток
+import random
+
+# функция защиты от дурака
+def is_valid(user_input):
+    # если строка состоит из чисел
+    if user_input.isdigit():
+        # тогда мы переводим ее в число
+        user_number = int(user_input)
+        # и после этого проверяем на нужный промежуток
+        if user_number >= 1 and user_number <= n:
+            return True
+        else:
+            return False
+    else:
+        return False
+    
+# функция подсчета оптимального кол-ва попыток
+def opt_counter(secret_number, n):
+
+    counter_2 = 0
+    list_numbers = []
+    
+    for i in range(1, n + 1):
+        list_numbers.append(i)
+    list_numbers.sort()  
+    mid = len(list_numbers) // 2
+    low = 0
+    high = len(list_numbers) - 1
+     
+    while list_numbers[mid] != secret_number and low <= high:
+        if secret_number > list_numbers[mid]:
+            low = mid + 1
+        else:
+            high = mid - 1
+        mid = (low + high) // 2
+        counter_2 += 1
+     
+    if low > high:
+        return False
+    else:
+        return counter_2
+
+print('Добро пожаловать в игру "Угадай число"')
+
+# бесконечный цикл
+while True:
+    counter = 0
+    print('Введите число для обозначения границы случайного выбора числа')
+    n = int(input())
+
+    secret_number = random.randint(1, n)
+    counter_2 = opt_counter(secret_number, n)
+
+    while True:
+        print(f'Введите число от 1 до {n}')
+        user_input = input()
+    
+        # если введенное число не валидное, то пропускаем его 
+        if not is_valid(user_input):
+            continue
+    
+        user_number = int(user_input)
+        counter += 1
+    
+        if secret_number > user_number:
+            print('Загаданное число больше, чем введенное вами число')
+        elif secret_number < user_number:
+            print('Загаданное число меньше, чем введенное вами число')
+        else:
+            print('Вы угадали!')
+            print(f'Количество попыток: {counter}')
+            print(f'Оптимальное количество попыток: {counter_2}')
+
+            break    
