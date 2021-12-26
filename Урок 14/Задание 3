@@ -1,0 +1,119 @@
+# Генератор пароля. Проверка на дурака
+import random
+
+def ask_question(question):
+    print(question, 'Нажмите Да или Нет')
+    answer = input()
+    if answer == 'Да':
+        return True
+    else:
+        return False
+
+def generate_password(length, chars):
+    password = ''
+    for i in range(length):
+        random_index = random.randint(0, len(chars) - 1)
+        password += chars[random_index]
+
+    return password
+
+def is_valid_int(user_input):
+    if user_input.isdigit():
+        return True
+    else:
+        return False
+
+def is_valid_str(user_input):
+    if user_input != 'Да' or user_input != 'Нет':
+        return False
+    else:
+        return True
+
+while True:
+    print('Привет. Я генератор паролей.\nЯ задам пару уточняющих вопросов, на основе которых сгенерирую пароль.\nДавай начнем')
+    while True:
+
+        print('Введите количество необходимых паролей')
+        number_of_passwords_user = input()
+    
+        if not is_valid_int(number_of_passwords_user):
+            print('Попробуйте еще')
+            continue
+    
+        number_of_passwords = int(number_of_passwords_user)
+        
+        print('Введите длину пароля')
+        length_user = input()
+    
+        if not is_valid_int(number_of_passwords_user):
+            print('Попробуйте еще')
+            continue
+    
+        length = int(length_user)
+        
+        digits_enabled = ask_question('Включать ли цифры?')
+    
+        if not is_valid_str(digits_enabled):
+            print('Попробуйте еще')
+            continue
+    
+        latin_lowercase_enabled = ask_question('Включать ли строчные латинские буквы?')
+    
+        if not is_valid_str(latin_lowercase_enabled):
+            print('Попробуйте еще')
+            continue
+        
+        latin_uppercase_enabled = ask_question('Включать ли заглавные латинские буквы?')
+    
+        if not is_valid_str(latin_uppercase_enabled):
+            print('Попробуйте еще')
+            continue
+        
+        russian_lowercase_enabled = ask_question('Включать ли строчные русские буквы?')
+    
+        if not is_valid_str(russian_lowercase_enabled):
+            print('Попробуйте еще')
+            continue
+        
+        russian_uppercase_enabled = ask_question('Включать ли заглавные русские буквы?')
+    
+        if not is_valid_str(russian_uppercase_enabled):
+            print('Попробуйте еще')
+            continue
+        
+        punctuations_enabled = ask_question('Включать ли знаки пунктуации?')
+    
+        if not is_valid_str(punctuations_enabled):
+            print('Попробуйте еще')
+            continue
+        
+        enabled_chars = ''
+        
+        digits = '0123456789'
+        latin_lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
+        latin_uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        russian_lowercase_letters = 'абвгдежзийклмнопрстуфхцчшщъыьэюя'
+        russian_uppercase_letters = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+        punctuations = '!#$%&*+-=?@^_'
+        
+        if digits_enabled:
+            enabled_chars += digits
+        
+        if latin_lowercase_enabled:
+            enabled_chars += latin_lowercase_letters
+        
+        if latin_uppercase_enabled:
+            enabled_chars += latin_uppercase_letters
+        
+        if russian_lowercase_enabled:
+            enabled_chars += russian_lowercase_letters
+        
+        if russian_uppercase_enabled:
+            enabled_chars += russian_uppercase_letters
+        
+        if punctuations_enabled:
+            enabled_chars += punctuations
+    
+        for i in range(number_of_passwords):
+            password = generate_password(length, enabled_chars)
+            print(password)    
