@@ -1,0 +1,48 @@
+def my_Tester_result(count_right_answers, user_name):
+    if count_right_answers == 5:
+        print(user_name, '-колличество правильных ответов: ', count_right_answers, 'Гений')
+    elif count_right_answers == 4:
+        print(user_name, '-колличество правильных ответов: ', count_right_answers, 'Талант')
+    elif count_right_answers == 3:
+        print(user_name, '-колличество правильных ответов: ', count_right_answers, 'Нормальный')
+    elif count_right_answers == 2:
+        print(user_name, '-колличество правильных ответов: ', count_right_answers, 'Дурак')
+    elif count_right_answers == 1:
+        print(user_name, '-колличество правильных ответов: ', count_right_answers, 'Кретин')
+    elif count_right_answers == 0:
+        print('Колличество правильных ответов: ', count_right_answers, 'Идиот')
+
+def tester(questions, answers):
+    count_right_answers = 0
+    for i in range(len(questions)):
+        print('№', i+1, questions[i])
+        user_answer = int(input())
+        right_answer = answers[i]
+        if user_answer == right_answer:
+            count_right_answers += 1
+    return count_right_answers
+def my_Tester():
+    user_name = input('Как вас зовут? ')
+    questions = [
+        'Сколько будет 2 + 2 * 2',
+        'Бревно надо распелить на 10 частей, скольо нужно пилов',
+        'На 2х руках 10 пальце, сколько на 5',
+        'укол делают каждые пол часа, сколько нужно минут для 3х уколов',
+        '5 свечей горело, 2 потухли. Сколько свечей осталось'
+    ]
+    answers = [6, 9, 35, 60, 2]
+
+
+    count_right_answers = tester(questions, answers)
+
+    my_Tester_result(count_right_answers, user_name)
+
+
+
+while True:
+    my_Tester()
+    continue_game = input('Повторим? y/n ')
+    if (continue_game.lower() == 'y'):
+        continue
+    else:
+        break
