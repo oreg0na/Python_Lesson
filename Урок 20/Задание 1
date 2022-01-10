@@ -1,0 +1,96 @@
+import random
+
+class Question:
+    def __init__(self, text, answer):
+        self.text = text
+        self.answer = answer
+
+class QuestionsStorage:
+    def get_questions():
+        questions = [
+            Question('Сколько будет два плюс два, умноженное на 2?', 6),
+            Question('Бревно надо распилить на 10 частей. Сколько надо сделать распилов?', 9),
+            Question('На двух руках 10 пальцев. Сколько пальцев на 5 руках?', 25),
+            Question('Укол делают каждые пол часа. Сколько нужно минут для трех уколов?', 60),
+            Question('Пять свечей горело, две потухло. Сколько свечей осталось?', 2)
+        ]
+        return questions
+    
+class User:
+    def __init__(self, user_name, count_right_answers, result):
+        self.name = user_name
+        self.count_right_answers = count_right_answers
+        self.result = result
+
+class UsersResultStorage:
+    def safe_user_result(user_name, count_right_answers, result):
+        file_name = 'results.txt'
+        file = open(file_name, 'a')
+        file.write(f'{user_name}#{count_right_answers}#{result}\n')
+        file.close()
+
+    def show_user_results():
+        file_name = 'results.txt'
+        file = open(file_name, 'r')
+        name = 'Имя'
+        count_right_answers = 'Кол-во правильных ответов'
+        result = 'Результат'
+        print(f'{name:15}{count_right_answers:26}{result:15}')
+        for line in file:
+            line = line.strip('\n')
+            values = line.split('#')
+            print(f'{values[0]:15}{values[1]:26}{values[2]:15}')
+
+def ask_question(question):
+    print(question, 'Введите Да или Нет.')
+    answer = input().lower()
+    while answer != 'да' and answer != 'нет':
+        print('Ответ некорректный! Возможные варианты ввода: Да или Нет')
+        answer = input().lower()
+    if answer == 'да':
+        return True
+    else:
+        return False
+
+def calculate_result(count_right_answers, count_questions):
+    results = ['Идиот', 'Кретин', 'Дурак', 'Нормальный', 'Талант', 'Гений']
+    right_answer_percent = count_right_answers * 100 // count_questions
+    return results[right_answer_percent // 20]
+
+def get_user_answer():
+    user_answer = input()
+    while not user_answer.isdigit():
+        print('Ошибка ввода. Ответ должен представлять собой целое число')
+        user_answer = input()
+    return int(user_answer)
+
+while True:
+    questions = QuestionsStorage.get_questions()
+
+    print('Введите ваше имя:')
+    User.user_name = input()
+    User.count_right_answers = 0
+    count_questions = len(questions)
+
+    for i in range(len(questions)):
+        random_index = random.randint(0, len(questions) - 1)
+
+        print(f'Вопрос №{i + 1}. {questions[random_index].text}')
+        user_answer = get_user_answer()
+        right_answer = questions[random_index].answer
+        if user_answer == right_answer:
+            User.count_right_answers += 1
+            
+        questions.pop(random_index)
+
+    User.result = calculate_result(User.count_right_answers, count_questions)
+    print(f'{User.user_name}, количество ваших правильных ответов - {User.count_right_answers}. Ваш диагноз: {User.result}.')
+    
+
+    UsersResultStorage.safe_user_result(User.user_name, User.count_right_answers, User.result)
+
+    if not ask_question('Хотите начать тест заново?'):       
+        break
+    
+if ask_question('Хотите вывести результаты?'):
+    UsersResultStorage.show_user_results()
