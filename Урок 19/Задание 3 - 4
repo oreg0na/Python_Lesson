@@ -1,0 +1,70 @@
+import random
+
+def calculate_result(count_right_answers):
+    results = ['Идиот', 'Кретин', 'Дурак', 'Нормальный', 'Талант', 'Гений']
+    return results[count_right_answers]
+
+
+def get_questions():
+    questions = [
+        'Сколько будет 2 + 2 * 2',
+        'Бревно надо распелить на 10 частей, скольо нужно пилов',
+        'На 2х руках 10 пальце, сколько на 5',
+        'укол делают каждые пол часа, сколько нужно минут для 3х уколов',
+        '5 свечей горело, 2 потухли. Сколько свечей осталось'
+    ]
+    return questions
+def get_answers():
+    answers = [6, 9, 35, 60, 2]
+    return answers
+
+def my_Tester():
+    user_name = input('Как вас зовут? ')
+    questions = get_questions()
+    answers = get_answers()
+    count_right_answers = 0
+    for i in range(len(questions)):
+        print(f'Вопрос №{i+1}')
+        random_index = random.randint(0, len(questions) - 1)
+        print(questions[random_index])
+        while True:
+            user_answer = input()
+            if user_answer.isdigit():
+                pass
+            else:
+                print('Пожалуйста введите число')
+                continue
+            break
+        right_answer = answers[random_index]
+        if int(user_answer) == right_answer:
+            count_right_answers += 1
+        questions.pop(random_index)
+        answers.pop(random_index)
+
+    result = calculate_result(count_right_answers)
+    print('Количество правильных ответов =', count_right_answers)
+    print(f'{user_name}, -колличество правильных ответов: , {result}')
+    file = open('my_tester_results.txt', 'a')
+    file.write(f'{user_name} {count_right_answers} {result}\n')
+    file.close()
+
+while True:
+    my_Tester()
+    continue_game = input('Повторим? y/n ')
+    if (continue_game.lower() == 'y'):
+        continue
+    else:
+        break
+
+table_result = input('Вывести таблицу результатов? да или нет')
+if table_result.lower() == 'да':
+    file_table = open('my_tester_results.txt', 'r')
+    name = 'Имя'
+    count_right_answers = 'Кол-во правильных ответов'
+    result = 'Результат'
+    print(f'{name:10}{count_right_answers:30}{result:15}')
+    for string in file_table:
+        string = string.strip().strip('\n')
+        string_line = string.split(' ')
+        print(f'{string_line[0]:10}{string_line[1]:30}{string_line[2]:15}')
+    file_table.close()

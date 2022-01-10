@@ -1,0 +1,95 @@
+import random
+
+class Question:
+    def __init__(self, text, answer):
+        self.text = text
+        self.answer = answer
+
+
+
+class QuestionStrorage:
+    def __init__(self, question):
+        self.question = question
+    def get_all(self):
+        return self.question
+
+qs = QuestionStrorage([
+        Question('Сколько будет 2 + 2 * 2', 6),
+        Question('Бревно надо распелить на 10 частей, скольо нужно пилов', 9),
+        Question('На 2х руках 10 пальце, сколько на 5', 25),
+        Question('укол делают каждые пол часа, сколько нужно минут для 3х уколов', 60),
+        Question('5 свечей горело, 2 потухли. Сколько свечей осталось', 2)
+        ])
+
+class User:
+    def __init__(self, user_name):
+        self.user_name = user_name
+        self.count_right_answers = 0
+        self.result = ''
+    def inc_righta_answer(self):
+        self.count_right_answers +=1
+    def calculate_result(self, count_questions):
+        right_answers_percents = self.count_right_answers * 100 // count_questions
+        results = ['Идиот', 'Кретин', 'Дурак', 'Нормальный', 'Талант', 'Гений']
+        self.result = results[right_answers_percents // 20]
+        return self.result
+
+class UsersResultStorage:
+    def __init__(self):
+        self.result = []
+    def add_user(self, test_player):
+        self.result.append(test_player)
+
+def safe_user_results(user_name, count_right_answers, result):
+    file = open('my_tester_results.txt', 'a')
+    file.write(f'{user_name} {count_right_answers} {result}\n')
+    file.close()
+def show_user_results(table_result):
+    if table_result.lower() == 'да':
+        file_table = open('my_tester_results.txt', 'r')
+        name = 'Имя'
+        count_right_answers = 'Кол-во правильных ответов'
+        result = 'Результат'
+        print(f'{name:15}{count_right_answers:30}{result:15}')
+        for string in file_table:
+            string = string.strip('\n')
+            string_line = string.split(' ')
+            print(f'{string_line[0]:15}{string_line[1]:30}{string_line[2]:15}')
+        file_table.close()
+user_result = UsersResultStorage()
+while True:
+    questions = qs.get_all()
+    test_player = User(input('Как вас зовут? '))
+
+    count_questions = len(questions)
+    for i in range(len(questions)):
+        print(f'Вопрос №{i + 1}')
+        random_index = random.randint(0, len(questions) - 1)
+        print(questions[random_index].text)
+        while True:
+            user_answer = input()
+            if user_answer.isdigit():
+                pass
+            else:
+                print('Пожалуйста введите число')
+                continue
+            break
+        right_answer = questions[random_index].answer
+        if int(user_answer) == right_answer:
+            test_player.inc_righta_answer()
+        questions.pop(random_index)
+
+    test_player.calculate_result(count_questions)
+    user_result.add_user(test_player)
+    print('Количество правильных ответов =', test_player.count_right_answers)
+    print(f'{test_player.user_name}, -колличество правильных ответов: , {test_player.result}')
+    safe_user_results(test_player.user_name, test_player.count_right_answers, test_player.result)
+
+    continue_game = input('Повторим? y/n ')
+    if (continue_game.lower() == 'y'):
+        continue
+    else:
+        break
+
+table_result = input('Вывести таблицу результатов? да или нет')
+show_user_results(table_result)
